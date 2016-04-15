@@ -17,7 +17,7 @@ npm install && ionic state restore
 
 ```
 # Dev server
-npm run devserver
+npm run start
 
 # Dump files in www
 npm run dumpdev
