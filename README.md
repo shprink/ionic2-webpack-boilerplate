@@ -5,7 +5,7 @@ It is the perfect Boilerplate to start an app in no time.
 ## Prerequisites
 
 * Ionic CLI `npm - ionic@beta --global`
-* Cordova
+* Cordova CLI
 
 ## Installation
 
@@ -27,4 +27,7 @@ npm run dumpprod
 npm run android
 npm run ios
 npm run iosEmulator
+
+# Webpack bundle analyser 
+npm run analyze
 ```

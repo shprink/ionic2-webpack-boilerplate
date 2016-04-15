@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "better-npm-run start",
+    "analyze": "better-npm-run analyze",
     "dumpprod": "better-npm-run dumpprod",
     "dumpdev": "better-npm-run dumpdev",
     "restore": "ionic state restore",
@@ -32,6 +33,12 @@
       "command": "better-npm-run webpack",
       "env": {
         "NODE_ENV": "production"
+      }
+    },
+    "analyze": {
+      "command": "rm -rf www/* && webpack --progress --json | webpack-bundle-size-analyzer",
+      "env": {
+        "NODE_ENV": "development"
       }
     }
   },
@@ -69,6 +76,7 @@
     "style-loader": "^0.13.1",
     "typescript": "^1.8.10",
     "webpack": "^1.12.15",
+    "webpack-bundle-size-analyzer": "^2.0.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
