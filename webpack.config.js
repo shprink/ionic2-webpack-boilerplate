@@ -113,5 +113,11 @@ module.exports = {
                 loader: 'file?name=fonts/[name].[ext]'
             }
         ]
+    },
+    sassLoader: {
+        includePaths: [
+            "node_modules/ionic-angular",
+            "node_modules/ionicons/dist/scss"
+        ]
     }
 };
