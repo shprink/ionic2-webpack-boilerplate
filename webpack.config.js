@@ -9,7 +9,7 @@ let path = require('path'),
 
 let paths = {
     www: path.join(__dirname, 'www'),
-    src: path.join(__dirname, 'src')
+    src: path.join(__dirname, 'app')
 }
 let devtool = '#cheap-eval-source-map';
 let appEntries = [];
@@ -62,7 +62,14 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
     entry: {
         app: appEntries,
-        vendor: [
+        polyfills: [
+            'es5-shim',
+            'es6-shim',
+            'es6-promise',
+            'reflect-metadata',
+            'zone.js'
+        ],
+        vendors: [
             'es5-shim',
             'es6-shim',
             'es6-promise',
@@ -94,7 +101,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 exclude: /(node_modules)/,
-                loader: 'awesome-typescript-loader',
+                loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
                 include: paths.src
             }, {
                 test: /\.json$/,

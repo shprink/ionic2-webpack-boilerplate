@@ -1,23 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "removeComments": true,
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
-    },
-    "filesGlob": [
-        "**/*.ts",
-        "!node_modules/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "typings/main",
-        "typings/main.d.ts"
-    ],
-    "compileOnSave": false,
-    "atom": {
-        "rewriteTsconfig": false
-    }
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "removeComments": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true //Allows loaders to be chained to awesome-typescript-loader.
+  },
+  "files": [
+    "app/index.ts",
+    "typings/index.d.ts",
+    "typings/commonjs.d.ts",
+    "typings/webpack.d.ts"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }

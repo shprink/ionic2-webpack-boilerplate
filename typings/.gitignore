@@ -1,0 +1,4 @@
+*
+!.gitignore
+!commonjs.d.ts
+!webpack.d.ts
