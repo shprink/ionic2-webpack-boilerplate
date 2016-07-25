@@ -6,6 +6,7 @@ It is the perfect Boilerplate to start an app in no time.
 
 * Ionic CLI `npm - ionic@beta --global`
 * Cordova CLI
+* Typings CLI
 
 ## Installation
 
