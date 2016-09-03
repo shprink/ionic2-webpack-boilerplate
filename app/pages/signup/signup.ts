@@ -10,10 +10,13 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup: {username?: string, password?: string} = {};
+  signup: { username?: string, password?: string } = {};
   submitted = false;
 
-  constructor(private nav: NavController, private userData: UserData) {}
+  constructor(
+    private nav: NavController,
+    private userData: UserData
+  ) { }
 
   onSignup(form) {
     this.submitted = true;

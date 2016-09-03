@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController, Popover, ViewController } from 'ionic-angular';
+import { PopoverController, ViewController } from 'ionic-angular';
 
 
 @Component({
@@ -31,10 +31,12 @@ class PopoverPage {
 export class AboutPage {
   conferenceDate = '2047-05-17';
 
-  constructor(private nav: NavController) {}
+  constructor(
+    private popoverCtrl: PopoverController
+  ) { }
 
   presentPopover(event) {
-    let popover = Popover.create(PopoverPage);
-    this.nav.present(popover, { ev: event });
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({ ev: event });
   }
 }

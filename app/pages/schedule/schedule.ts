@@ -1,6 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Alert, App, ItemSliding, List, Modal, NavController, Page } from 'ionic-angular';
+import {
+  AlertController,
+  App,
+  ItemSliding,
+  List,
+  ModalController,
+  NavController,
+  Page
+} from 'ionic-angular';
 
 import { ConferenceData } from '../../providers/conference-data';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
@@ -16,7 +24,7 @@ export class SchedulePage {
   // @ViewChild('scheduleList') gets a reference to the list
   // with the variable #scheduleList, `read: List` tells it to return
   // the List and not a reference to the element
-  @ViewChild('scheduleList', {read: List}) scheduleList: List;
+  @ViewChild('scheduleList', { read: List }) scheduleList: List;
 
   dayIndex = 0;
   queryText = '';
@@ -28,8 +36,10 @@ export class SchedulePage {
   constructor(
     private app: App,
     private nav: NavController,
+    public alertCtrl: AlertController,
     private confData: ConferenceData,
-    private user: UserData
+    private user: UserData,
+    private modalCtrl: ModalController
   ) {
 
   }
@@ -53,16 +63,14 @@ export class SchedulePage {
   }
 
   presentFilter() {
-    let modal = Modal.create(ScheduleFilterPage, this.excludeTracks);
-    this.nav.present(modal);
-
-    modal.onDismiss((data: any[]) => {
+    let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);
+    modal.present();
+    modal.onDidDismiss((data: any[]) => {
       if (data) {
         this.excludeTracks = data;
         this.updateSchedule();
       }
     });
-
   }
 
   goToSessionDetail(sessionData) {
@@ -82,7 +90,7 @@ export class SchedulePage {
       this.user.addFavorite(sessionData.name);
 
       // create an alert instance
-      let alert = Alert.create({
+      let alert = this.alertCtrl.create({
         title: 'Favorite Added',
         buttons: [{
           text: 'OK',
@@ -93,13 +101,13 @@ export class SchedulePage {
         }]
       });
       // now present the alert on top of all other content
-      this.nav.present(alert);
+      alert.present();
     }
 
   }
 
   removeFavorite(slidingItem: ItemSliding, sessionData, title) {
-    let alert = Alert.create({
+    let alert = this.alertCtrl.create({
       title: title,
       message: 'Would you like to remove this session from your favorites?',
       buttons: [
@@ -125,6 +133,6 @@ export class SchedulePage {
       ]
     });
     // now present the alert on top of all other content
-    this.nav.present(alert);
+    alert.present();
   }
 }

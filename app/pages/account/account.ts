@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Alert, NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { UserData } from '../../providers/user-data';
@@ -12,9 +12,11 @@ import { UserData } from '../../providers/user-data';
 export class AccountPage {
   username: string;
 
-  constructor(private nav: NavController, private userData: UserData) {
-
-  }
+  constructor(
+    public nav: NavController,
+    public alertCtrl: AlertController,
+    private userData: UserData
+  ) { }
 
   ngAfterViewInit() {
     this.getUsername();
@@ -28,7 +30,7 @@ export class AccountPage {
   // clicking OK will update the username and display it
   // clicking Cancel will close the alert and do nothing
   changeUsername() {
-    let alert = Alert.create({
+    let alert = this.alertCtrl.create({
       title: 'Change Username',
       buttons: [
         'Cancel'
@@ -47,7 +49,7 @@ export class AccountPage {
       }
     });
 
-    this.nav.present(alert);
+    alert.present();
   }
 
   getUsername() {

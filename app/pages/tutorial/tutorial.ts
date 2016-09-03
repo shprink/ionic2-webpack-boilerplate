@@ -18,7 +18,10 @@ export class TutorialPage {
   slides: Slide[];
   showSkip = true;
 
-  constructor(private nav: NavController, private menu: MenuController) {
+  constructor(
+    private nav: NavController,
+    private menu: MenuController
+  ) {
     this.slides = [
       {
         title: 'Welcome to <b>ICA</b>',

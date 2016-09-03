@@ -11,10 +11,13 @@ import { UserData } from '../../providers/user-data';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: {username?: string, password?: string} = {};
+  login: { username?: string, password?: string } = {};
   submitted = false;
 
-  constructor(private nav: NavController, private userData: UserData) {}
+  constructor(
+    private nav: NavController,
+    private userData: UserData
+  ) { }
 
   onLogin(form) {
     this.submitted = true;
